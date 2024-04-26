@@ -34,3 +34,12 @@ resource "aws_iam_role_policy_attachment" "attach_ecs_policy" {
   role       = aws_iam_role.container_service_account.name
   policy_arn = data.aws_iam_policy.AmazonEC2FullAccess.arn
 }
+
+resource "aws_ecs_cluster" "etl_cluster" {
+  name = "OpenSourceEtlFramework"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
