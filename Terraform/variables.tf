@@ -2,10 +2,12 @@ variable "environment" {
   description = "Deployment environment"
 
   type = object ({
-    name  = string
+    name   = string
+	suffix = string
   })
   default = {
-    name  = "dev"
+    name   = "dev"
+	suffix = "_Dev"
   }
 }
 
