@@ -7,7 +7,7 @@ variable "environment" {
   })
   default = {
     name   = "dev"
-	suffix = "_Dev"
+	suffix = "_dev"
   }
 }
 

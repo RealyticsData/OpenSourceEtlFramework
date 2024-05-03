@@ -36,7 +36,7 @@ resource "aws_iam_role_policy_attachment" "attach_ecs_policy" {
 }
 
 resource "aws_ecs_cluster" "etl_cluster" {
-  name = "OpenSourceEtlFramework"
+  name = "OpenSourceEtlFramework$(var.environment.suffix)"
 
   setting {
     name  = "containerInsights"
