@@ -1,3 +1,8 @@
+locals {
+  etl_cluster_name = "OpenSourceEtlFramework$(var.environment.suffix)"
+  rds_identifier =   "etl_control$(var.environment.suffix)"
+}
+
 resource "aws_iam_group" "microservice_developers" {
   name = "MicroserviceDevelopers"
   path = "/OpenSourceEtlFramework/"
@@ -36,7 +41,7 @@ resource "aws_iam_role_policy_attachment" "attach_ecs_policy" {
 }
 
 resource "aws_ecs_cluster" "etl_cluster" {
-  name = "OpenSourceEtlFramework$(var.environment.suffix)"
+  name = local.etl_cluster_name
 
   setting {
     name  = "containerInsights"
@@ -46,7 +51,7 @@ resource "aws_ecs_cluster" "etl_cluster" {
 
 resource "aws_db_instance" "etl_control_db" {
   engine              = "Postgres"
-  identifier          = "etl-control"
+  identifier          = local.rds_identifier
   allocated_storage   = 20
   engine_version      = "15.4"
   instance_class      = "db.t3.micro"
