@@ -11,11 +11,5 @@ variable "environment" {
 
 variable "region" {
   description = "AWS Region"
-  
-  type = object ({
-    name  = string
-  })
-  default = {
-    name  = "us-east-1"
-  }
+  default     = "us-east-1"
 }
