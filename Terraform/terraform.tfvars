@@ -1,3 +1,3 @@
 # terraform.tfvars
-environment = "dev"
-region = "us_east_1"
+environment.name = "dev"
+region = "us-east-1"
