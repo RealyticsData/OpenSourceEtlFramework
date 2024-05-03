@@ -43,3 +43,15 @@ resource "aws_ecs_cluster" "etl_cluster" {
     value = "enabled"
   }
 }
+
+resource "aws_db_instance" "etl_control_db" {
+  engine              = "Postgres"
+  identifier          = "EtlControl"
+  allocated_storage   = 20
+  engine_version      = "15.4"
+  instance_class      = "db.t3.micro"
+  username            = "EtlService"
+  password            = "OpenSourceEtl1"
+  skip_final_snapshot = true
+  publicly_accessible = true
+}
